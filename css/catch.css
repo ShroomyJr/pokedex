@@ -1,0 +1,65 @@
+body{
+    font-family: 'Press Start 2P', cursive;
+    color: black;
+    /* -webkit-text-stroke: 1px; */
+    /* -webkit-text-stroke-color: black; */
+    background-color: #ffc86a;
+}
+
+.battle_arena {
+    background-image: url("../img/battle\ background.png");
+    background-repeat: no-repeat;
+    background-size:cover;
+    height: 300px;
+    width: 600px;
+    position: relative;
+    background-color: beige;
+    border: darkgray 5px solid;
+    /* border-radius: 10px 0 10px 0; */
+}
+
+.pokemon_image {
+    position: absolute;
+    bottom: 100px;
+    right: 50px;
+    height: 200px;
+}
+
+.pokemon_tag {
+    padding: 5px;
+    width: 200px;
+    height: min-content;
+    position: absolute;
+    margin: 25px;
+    background-color: beige;
+    border: darkgray 5px solid;
+    border-radius: 10px 0 10px 0;
+}
+
+.type {
+    margin-right: 5px;
+}
+
+.row {
+    position: relative;
+    display: flex;
+    width: min-content;
+    width: 700px;
+}
+
+.moves_box {
+    /* position: absolute; */
+    width: 600px;
+    height: min-content;
+    /* top: 200px; */
+    background-color: beige;
+    border: darkgray 5px solid;
+    /* border-radius: 10px 0 10px 0; */
+}
+
+.move {
+    width: 270px;
+    height: 65;
+    margin: 10px;
+    border: darkgray 5px solid;
+}

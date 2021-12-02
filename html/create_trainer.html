@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="../css/form.css">
+    <link rel="stylesheet" href="../css/types.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <h1>Create a Trainer!</h1>
+    <form>
+        <label for="name">First, what is your name?</label><br>
+        <input type="text" id="name" name="name"><br><br>
+        <label>Do you want to be a ...</label>
+        <div class="row">
+            <div class="col">
+                <img src="../img/hero.png"><br>
+                <input type="radio" id="male" name="gender" value="male" checked>
+                <label for="male">Boy</label>
+            </div>
+            <div class="col">
+                <img src="../img/heroine.png"><br>
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Girl</label>
+            </div>
+        </div>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
