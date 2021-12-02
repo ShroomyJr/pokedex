@@ -1,0 +1,45 @@
+body {
+    background: red;
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+  }
+
+.card-grid {
+    /* margin: auto; */
+    display: flex;
+    flex-flow: row wrap;
+    /* flex-direction: row; */
+}
+
+
+.card {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    border-radius: 1rem;
+    margin: 20px;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    transition: all 0.2s ease-in-out;
+}
+
+.pokemon_name {
+    position:absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.number {
+    position: absolute;
+    top: 50px;
+    left: 10px;
+}
+
+img {
+    position:absolute;
+    width: 150px;
+    bottom: 0;
+    right: 0;
+}
