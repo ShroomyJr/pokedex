@@ -1,0 +1,103 @@
+
+header {
+    background-color: blue;
+    width: 300px;
+    /* height: 30px; */
+    color: white;
+    -webkit-text-stroke: 1px;
+    -webkit-text-stroke-color: #666;
+    position: relative;
+    padding: 15px;
+    border-right: gold 10px;
+    border-radius: 0px 30px 30px 0px;
+}
+
+
+.party {
+    /* column-count: 2;
+    column-gap: 0; */
+    display: flex;
+    width: min-content;
+}
+
+.col {
+    flex: 50%;
+}
+
+.slot {
+    width: 300px;
+    height: 100px;
+    border: 5px solid rgb(190, 190, 190);
+    border-radius: 5px;
+    margin: 5px;
+    background-image: linear-gradient(slateblue, lightblue);
+    color: white;
+    -webkit-text-stroke: 1px;
+    -webkit-text-stroke-color: black;
+    position: relative;
+}
+
+.pokemon_name {
+    position: absolute;
+    left: 100px;
+    top: 20px;
+    font-size: 20px;
+}
+
+.lvl {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+}
+
+.health {
+    position: absolute;
+    bottom: 5px;
+    right: 20px;
+}
+
+progress {
+    position: relative;
+    bottom: 35px;
+    width: 150px;
+    height: 10px;
+    right: 20px;
+    border: 2px solid black;
+}
+
+progress[value] {
+    /* Get rid of the default appearance */
+    appearance: none;
+    position: absolute;
+  }
+  
+  progress[value]::-webkit-progress-bar {
+    background-color: whiteSmoke;
+  }
+  
+  /* Let's spice up things little bit by using pseudo elements. */
+  
+  progress[value]::-webkit-progress-value:after {
+    position: absolute;
+    background-color: white;
+  }
+  
+  /* Firefox provides a single pseudo class to style the progress element value and not for container. -moz-progress-bar */
+  
+  progress[value]::-moz-progress-bar {
+    background-color: green;}
+.spacer {
+    height: 25px;
+}
+
+.slot:empty {
+    background: #eee
+}
+
+body {
+    font-family: 'Press Start 2P', cursive;
+}
+
+img {
+    width: 25%;
+}

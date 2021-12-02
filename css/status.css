@@ -1,0 +1,161 @@
+body {
+    font-family: 'Press Start 2P', cursive;
+}
+
+header {
+    background-color: blue;
+    width: 300px;
+    /* height: 30px; */
+    color: white;
+    -webkit-text-stroke: 1px;
+    -webkit-text-stroke-color: #666;
+    position: relative;
+    padding: 15px;
+    border-right: gold 10px;
+    border-radius: 0px 30px 30px 0px;
+}
+
+.row {
+    display: flex;
+    width: min-content;
+    width: 700px;
+}
+
+.col {
+    flex: 50%;
+    width: 350;
+}
+
+
+.moves_col {
+    background: repeating-linear-gradient(
+    lightgreen,
+    lightgreen 5px,
+    white 5px,
+    white 10px
+    );
+    border: #666 5px solid;
+}
+
+.sprite_col {
+    border: #666 5px solid;
+    background-color: violet;
+    color: white;
+    -webkit-text-stroke: 1px;
+    -webkit-text-stroke-color: #666;
+    position: relative;
+}
+
+.lvl {
+    position: absolute;
+    left: 25px;
+    top: 20px;
+}
+
+.name {
+    position: absolute;
+    left: 125px;
+    top: 20px;
+}
+
+.sprite_box {
+    background: repeating-linear-gradient(
+        white,
+        white 2px,
+        lightgrey 2px,
+        lightgrey 10px
+    );
+    top: 20px;
+    margin: 25px;
+    width: 250px;
+    height: 250px;
+    border: purple 3px solid;
+    border-radius: 5px;
+    position: relative;
+}
+img {
+    width: 200px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.move_slot {
+    width: 300px;
+    height: 50px;
+    margin: 15px;
+    margin-left: 25px;
+    background-color: white;
+    color: #666;
+    position: relative;
+}
+
+.move_name {
+    position: absolute;
+    left: 100px;
+    top: 10px;
+}
+
+.move_pp {
+    position: absolute;
+    bottom: 0;
+    /* right: 20px; */
+}
+
+.move_type {
+    position: absolute;
+    top: -5px;
+    left: -15px;
+    padding: 1px;
+    color: white;
+    /* font-size: small; */
+    -webkit-text-stroke: 1px;
+    -webkit-text-stroke-color: black;
+}
+
+.info_box {
+    width: 690px;
+    background: repeating-linear-gradient(
+    orange,
+    orange 5px,
+    white 5px,
+    white 10px
+    );
+    border-bottom: #666 5px solid;
+    border-left: #666 5px solid;
+    border-right: #666 5px solid;
+}
+
+.info {
+    padding: 10px;
+    display: flex;
+    width: min-content;
+}
+
+.info_tag{
+    min-width: 150px;
+    max-width: max-content;
+    color: white;
+    -webkit-text-stroke: 1px;
+    -webkit-text-stroke-color: gray;
+    background-color: gray;
+    text-align: center;
+    border-radius: 5px 0px 0px 5px;
+}
+
+.info_text {
+    width: 150px;
+    background-color: white;
+    height: 30px;
+    padding-left: 10px;
+    border-radius: 0px 5px 5px 0px;
+}
+
+.description {
+    background-color: rgb(245, 239, 212);
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+}
