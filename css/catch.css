@@ -63,3 +63,17 @@ body{
     margin: 10px;
     border: darkgray 5px solid;
 }
+
+input[type=submit] {
+    width: 600px;
+    height: 50px;
+    font-size: large;
+    background-color: white;
+    border: darkgray 5px solid;
+    font-family: 'Press Start 2P', cursive;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #eee;
+}

@@ -1,0 +1,151 @@
+body {
+    background-color: #ffc86a;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.party_title {
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    margin: 5px;
+    background-color: white;
+    border: 5px solid darkgray;
+    width: 250px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.box_title {
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    /* background-image: url("../img/Tile\ Stars.png");
+    color: white; */
+    border-radius: 10px;
+    margin: auto;
+    background-color: white;
+    border: 5px solid darkgray;
+    padding: 20px;
+    width: 400px;
+    text-align: center;
+    font-size: larger;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.party {
+    display: flex;
+    width: max-content;
+}
+
+.row {
+    display: flex;
+}
+
+.col {
+    flex-direction: column;
+}
+
+.slot {
+    width: 250px;
+    height: 80px;
+    /* border: 5px solid rgb(190, 190, 190); */
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    margin: 5px;
+    background-color: white;
+    position: relative;
+    display: flex;
+    font-size: 15px;
+    cursor: pointer;
+    border: 5px solid darkgray;
+}
+
+.slot:hover {
+    transform: scale(1.05);
+    transition: all 0.2s ease-in-out;
+}
+
+.part_image {
+    position: absolute;
+    left: 10px;
+    height: 80px;
+    bottom: 0px;
+}
+
+.party_pokemon_name {
+    position: absolute;
+    left: 80px;
+    top: 20px;
+}
+
+.lvl {
+    position: absolute;
+    bottom: 5px;
+    left: 80px;
+    top: 40px;
+}
+
+
+.card-grid {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+
+.card {
+    width: 120px;
+    height: 120px;
+    position: relative;
+    border-radius: 1rem;
+    margin: 10px;
+    background-color: rgba(255,  255, 255, 1);
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    border: 5px solid darkgray;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    transition: all 0.2s ease-in-out;
+}
+
+.pokemon_name {
+    position: relative;
+    margin: 10px;
+    font-size: 15px;
+}
+
+.box_image {
+    position: absolute;
+    height: 100px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.context-menu {
+    display: none;
+    z-index: 1000;
+    position: absolute;
+    overflow: hidden;
+    border: 5px solid darkgray;
+    white-space: nowrap;
+    background: #FFF;
+    color: #333;
+    border-radius: 5px;
+    padding: 0;
+}
+
+/* Each of the items in the list */
+.context-menu li {
+    padding: 8px 12px;
+    cursor: pointer;
+    list-style-type: none;
+    transition: all .3s ease;
+    user-select: none;
+}
+
+.context-menu li:hover {
+    background-color: goldenrod;
+}
