@@ -1,0 +1,17 @@
+.report_card {
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    /* margin: 0 auto; */
+    /* display: block; */
+    background-color: white;
+    border: 5px solid darkgray;
+    padding: 20px;
+    margin: 10px;
+    width: min-content;
+    height: min-content;
+    text-align: center;
+    font-size: medium;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: 'Press Start 2P', cursive;    
+}

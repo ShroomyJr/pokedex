@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="../js/pc_box.js"></script>
+    <link rel="stylesheet" href="../css/pc_box.css">
+    <link rel="stylesheet" href="../css/report.css">
+    <link rel="stylesheet" href="../css/types.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="navbar">
+        <a class="navbar-item" href="./pokedex.html">Pokedex</a>
+        <a class="navbar-item" href="./pcbox.html">PC Box</a>
+        <a class="navbar-item" href="./matchups.html">Matchups</a>
+    </div>
+    <div class="row">
+        <div class="col party">
+            <div class="party_title">Party</div>
+            <div name="slot1" class="slot">
+                <img class="party_image" src="../img/pkmn_001.png">
+                <div class="col">
+                    <div class="party_pokemon_name">Bulbasoar</div>
+                    <div class="lvl">Lv.30</div>
+                </div>
+            </div>
+            <div name="slot2" class="slot">
+                <img class="party_image" src="../img/pkmn_066.png">
+                <div class="party_pokemon_name">Machamp</div>
+                <div class="lvl">Lv.23</div>
+            </div>
+            <div name="slot3" class="slot">
+                <img class="party_image" src="../img/pkmn_039.png">
+                <div class="party_pokemon_name">Jigglypuff</div>
+                <div class="lvl">Lv.1</div>
+            </div>
+            <div name="slot4" class="slot"></div>
+            <div name="slot5" class="slot"></div>
+            <div name="slot6" class="slot"></div>
+        </div>
+        <div class="col">
+            <form class="row">
+                <label for="trainer">Trainer:</label>
+                <select class="box_title" name="trainer">
+                    <option value="red">Red's Pokemon</option>
+                    <option value="jake">Jake's Pokemon</option>
+                    <option value="luke">Luke's Pokemon</option>
+                </select>
+                <label for="sort">Sort:</label>
+                <a class="box_title" href="./pcbox.html">View Box</a>
+            </form>
+            <div class="report_card">
+                <table class="" id="table">
+                    <thead>
+                        <th>Number</th>
+                        <th>Sprite</th>
+                        <th>Name</th>
+                        <th>Level</th>
+                        <th>Type 1</th>
+                        <th>Type 2</th>
+                        <th>Male/Female</th>
+                    </thead>
+                    <tbody>
+                        <tr class="">
+                            <td class="table-cell">#039</td>
+                            <td>
+                                <img class="table-image" src="../img/pkmn_039.png">
+                            </td>
+                            <td class="table-cell">Jigglypuff</td>
+                            <td class="table-cell">02</td>
+                            <td class="table-cell Normal  ">Normal  </td>
+                            <td class="table-cell ">None</td>
+                            <td class="table-cell">Male/Female</td>
+                        </tr>
+                        <tr class="">
+                            <td class="table-cell">#057</td>
+                            <td>
+                                <img class="table-image" src="../img/pkmn_057.png">
+                            </td>
+                            <td class="table-cell">Primape</td>
+                            <td class="table-cell">03</td>
+                            <td class="table-cell Fighting">Fighting</td>
+                            <td class="table-cell ">None</td>
+                            <td class="table-cell">Male/Female</td>
+                        </tr>
+                        <tr class="">
+                            <td class="table-cell">#012</td>
+                            <td>
+                                <img class="table-image" src="../img/pkmn_012.png">
+                            </td>
+                            <td class="table-cell">Butterfree</td>
+                            <td class="table-cell">04</td>
+                            <td class="table-cell Bug     ">Bug</td>
+                            <td class="table-cell Flying  ">Flying  </td>
+                            <td class="table-cell">Male/Female</td>
+                        </tr>
+                        <tr class="">
+                            <td class="table-cell">#024</td>
+                            <td>
+                                <img class="table-image" src="../img/pkmn_024.png">
+                            </td>
+                            <td class="table-cell">Arbok</td>
+                            <td class="table-cell">05</td>
+                            <td class="table-cell Poison ">Poison  </td>
+                            <td class="table-cell ">None</td>
+                            <td class="table-cell">Male/Female</td>
+                        </tr>
+                        <tr class="">
+                            <td class="table-cell">#051</td>
+                            <td>
+                                <img class="table-image" src="../img/pkmn_051.png">
+                            </td>
+                            <td class="table-cell">Dugtrio</td>
+                            <td class="table-cell">06</td>
+                            <td class="table-cell Ground  ">Ground  </td>
+                            <td class="table-cell ">None</td>
+                            <td class="table-cell">Male/Female</td>
+                        </tr>
+                        <tr class="">
+                            <td class="table-cell">#076</td>
+                            <td>
+                                <img class="table-image" src="../img/pkmn_076.png">
+                            </td>
+                            <td class="table-cell">Golem</td>
+                            <td class="table-cell">07</td>
+                            <td class="table-cell Rock  ">Rock  </td>
+                            <td class="table-cell Ground">Ground</td>
+                            <td class="table-cell">Male/Female</td>
+                        </tr>
+                        <tr class="">
+                            <td class="table-cell">#047</td>
+                            <td>
+                                <img class="table-image" src="../img/pkmn_047.png">
+                            </td>
+                            <td class="table-cell">Parasect</td>
+                            <td class="table-cell">08</td>
+                            <td class="table-cell Bug  ">Bug  </td>
+                            <td class="table-cell Grass">Grass</td>
+                            <td class="table-cell">Male/Female</td>
+                        </tr>
+                        <tr class="">
+                            <td class="table-cell">#094</td>
+                            <td>
+                                <img class="table-image" src="../img/pkmn_094.png">
+                            </td>
+                            <td class="table-cell">Gengar</td>
+                            <td class="table-cell">09</td>
+                            <td class="table-cell Ghost  ">Ghost  </td>
+                            <td class="table-cell Poison">Poison</td>
+                            <td class="table-cell">Male/Female</td>
+                        </tr>
+                        <tr class="">
+                            <td class="table-cell">#082</td>
+                            <td>
+                                <img class="table-image" src="../img/pkmn_082.png">
+                            </td>
+                            <td class="table-cell">Magneton</td>
+                            <td class="table-cell">01</td>
+                            <td class="table-cell Electric  ">Electric  </td>
+                            <td class="table-cell ">None</td>
+                            <td class="table-cell">Male/Female</td>
+                        </tr>
+                        <tr class="">
+                            <td class="table-cell">#078</td>
+                            <td>
+                                <img class="table-image" src="../img/pkmn_078.png">
+                            </td>
+                            <td class="table-cell">Ponyta</td>
+                            <td class="table-cell">02</td>
+                            <td class="table-cell Fire  ">Fire  </td>
+                            <td class="table-cell ">None</td>
+                            <td class="table-cell">Male/Female</td>
+                        </tr>
+                        <tr class="">
+                            <td class="table-cell">#009</td>
+                            <td>
+                                <img class="table-image" src="../img/pkmn_009.png">
+                            </td>
+                            <td class="table-cell">Blastoise</td>
+                            <td class="table-cell">03</td>
+                            <td class="table-cell Water  ">Water  </td>
+                            <td class="table-cell ">None</td>
+                            <td class="table-cell">Male/Female</td>
+                        </tr>
+                        <tr class="">
+                            <td class="table-cell">#045</td>
+                            <td>
+                                <img class="table-image" src="../img/pkmn_045.png">
+                            </td>
+                            <td class="table-cell">Vileplume</td>
+                            <td class="table-cell">04</td>
+                            <td class="table-cell Grass  ">Grass  </td>
+                            <td class="table-cell Poison">Poison</td>
+                            <td class="table-cell">Male/Female</td>
+                        </tr>
+                        <tr class="">
+                            <td class="table-cell">#025</td>
+                            <td>
+                                <img class="table-image" src="../img/pkmn_025.png">
+                            </td>
+                            <td class="table-cell">Pikachu</td>
+                            <td class="table-cell">05</td>
+                            <td class="table-cell Electric  ">Electric  </td>
+                            <td class="table-cell ">None</td>
+                            <td class="table-cell">Male/Female</td>
+                        </tr>
+                        <tr class="">
+                            <td class="table-cell">#063</td>
+                            <td>
+                                <img class="" src="../img/pkmn_063.png">
+                            </td>
+                            <td class="table-cell">Abra</td>
+                            <td class="table-cell">06</td>
+                            <td class="table-cell Psychic  ">Psychic  </td>
+                            <td class="table-cell ">None</td>
+                            <td class="table-cell">Male/Female</td>
+                        </tr>
+                        <tr class="">
+                            <td class="table-cell">#144</td>
+                            <td>
+                                <img class="" src="../img/pkmn_144.png">
+                            </td>
+                            <td class="table-cell">Articuno</td>
+                            <td class="table-cell">07</td>
+                            <td class="table-cell Ice  ">Ice  </td>
+                            <td class="table-cell Flying">Flying</td>
+                            <td class="table-cell">Male/Female</td>
+                        </tr>
+                        <tr class="">
+                            <td class="table-cell">#148</td>
+                            <td>
+                                <img class="" src="../img/pkmn_148.png">
+                            </td>
+                            <td class="table-cell">Dragonair</td>
+                            <td class="table-cell">08</td>
+                            <td class="table-cell Dragon  ">Dragon  </td>
+                            <td class="table-cell ">None</td>
+                            <td class="table-cell">Male/Female</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>

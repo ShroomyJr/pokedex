@@ -20,6 +20,7 @@ $(document).ready(function () {
         $(".context-menu").hide(100);
     });
 
+    $("#table").DataTable();
 
 });
 $(document).bind("mousedown", function (e) {
