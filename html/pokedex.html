@@ -6,9 +6,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 </head>
 
 <body>
+    <div class="navbar">
+        <a class="navbar-item" href="./pokedex.html">Pokedex</a>
+        <a class="navbar-item" href="./pcbox.html">PC Box</a>
+        <a class="navbar-item" href="./matchups.html">Matchups</a>
+    </div>
     <form>
         <div class="row">
             <label for="sort">Sort: </label>
@@ -39,88 +46,89 @@
                 <option value=" Ice      ">Ice      </option>
                 <option value=" Dragon   ">Dragon   </option>
             </select>
+            <a class="party_title" href="./pokedex_report.html">View Report</a>
         </div>
     </form>
     <div class="card-grid">
         <div class="card Water   ">
             <div class="pokemon_name">Blastoise</div>
             <div class="number">#009</div>
-            <img src="../img/pkmn_009.png">
+            <img class="pokemon_image" src="../img/pkmn_009.png">
         </div>
         <div class="card Flying  ">
             <div class="pokemon_name">Butterfree</div>
             <div class="number">#012</div>
-            <img src="../img/pkmn_012.png">
+            <img class="pokemon_image" src="../img/pkmn_012.png">
         </div>
         <div class="card Poison  ">
             <div class="pokemon_name">Arbok</div>
             <div class="number">#024</div>
-            <img src="../img/pkmn_024.png">
+            <img class="pokemon_image" src="../img/pkmn_024.png">
         </div>
         <div class="card Electric">
             <div class="pokemon_name">Pikachu</div>
             <div class="number">#025</div>
-            <img src="../img/pkmn_025.png">
+            <img class="pokemon_image" src="../img/pkmn_025.png">
         </div>
         <div class="card Normal  ">
             <div class="pokemon_name">Jigglypuff</div>
             <div class="number">#039</div>
-            <img src="../img/pkmn_039.png">
+            <img class="pokemon_image" src="../img/pkmn_039.png">
         </div>
         <div class="card Grass   ">
             <div class="pokemon_name">Vileplume</div>
             <div class="number">#045</div>
-            <img src="../img/pkmn_045.png">
+            <img class="pokemon_image" src="../img/pkmn_045.png">
         </div>
         <div class="card Bug     ">
             <div class="pokemon_name">Parasect</div>
             <div class="number">#047</div>
-            <img src="../img/pkmn_047.png">
+            <img class="pokemon_image" src="../img/pkmn_047.png">
         </div>
         <div class="card Ground  ">
             <div class="pokemon_name">Dugtrio</div>
             <div class="number">#051</div>
-            <img src="../img/pkmn_051.png">
+            <img class="pokemon_image" src="../img/pkmn_051.png">
         </div>
         <div class="card Fighting">
             <div class="pokemon_name">Primeape</div>
             <div class="number">#057</div>
-            <img src="../img/pkmn_057.png">
+            <img class="pokemon_image" src="../img/pkmn_057.png">
         </div>
         <div class="card Psychic ">
             <div class="pokemon_name">Abra</div>
             <div class="number">#063</div>
-            <img src="../img/pkmn_063.png">
+            <img class="pokemon_image" src="../img/pkmn_063.png">
         </div>
         <div class="card Rock    ">
             <div class="pokemon_name">Golem</div>
             <div class="number">#076</div>
-            <img src="../img/pkmn_076.png">
+            <img class="pokemon_image" src="../img/pkmn_076.png">
         </div>
         <div class="card Fire    ">
             <div class="pokemon_name">Rapidash</div>
             <div class="number">#078</div>
-            <img src="../img/pkmn_078.png">
+            <img class="pokemon_image" src="../img/pkmn_078.png">
         </div>
         <div class="card Steel   ">
             <div class="pokemon_name">Magneton</div>
             <div class="number">#082</div>
-            <img src="../img/pkmn_082.png">
+            <img class="pokemon_image" src="../img/pkmn_082.png">
         </div>
         <div class="card Ghost   ">
             <div class="pokemon_name">Gengar</div>
             <div class="number">#094</div>
-            <img src="../img/pkmn_094.png">
+            <img class="pokemon_image" src="../img/pkmn_094.png">
         </div>
         <div class="card Ice     ">
             <div class="pokemon_name">Articuno</div>
             <div class="number">#144</div>
-            <img src="../img/pkmn_144.png">
+            <img class="pokemon_image" src="../img/pkmn_144.png">
         </div>
         <div class="card Dragon  ">
             <div class="pokemon_name">Dragonair</div>
             <div class="number">#148</div>
-            <img src="../img/pkmn_148.png">
+            <img class="pokemon_image" src="../img/pkmn_148.png">
         </div>
     </div>
 </body>

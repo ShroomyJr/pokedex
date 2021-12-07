@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="../css/pokedex.css">
+    <link rel="stylesheet" href="../css/types.css">
+    <link rel="stylesheet" href="../css/report.css">
+    <script src="../js/pc_box.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+</head>
+
+<body>
+    <div class="navbar">
+        <a class="navbar-item" href="./pokedex.html">Pokedex</a>
+        <a class="navbar-item" href="./pcbox.html">PC Box</a>
+        <a class="navbar-item" href="./matchups.html">Matchups</a>
+    </div>
+    <form>
+        <div class="row">
+            <label for="sort">Sort: </label>
+            <select id="sort" name="sort" class="party_title">
+                <option value="Sort By"  disabled>Sort By</option>
+                <option value="name asc">Name Asc</option>
+                <option value="name desc">Name Desc</option>
+                <option value="number asc" default>Number Asc</option>
+                <option value="number desc">Number Desc</option>
+            </select>
+            <label for="type">Type:</label>
+            <select id="type" name="type" class="party_title">
+                <option value="none" default >All Types</option>
+                <option value=" Normal   ">Normal   </option>
+                <option value=" Fighting ">Fighting </option>
+                <option value=" Flying   ">Flying   </option>
+                <option value=" Poison   ">Poison   </option>
+                <option value=" Ground   ">Ground   </option>
+                <option value=" Rock     ">Rock     </option>
+                <option value=" Bug      ">Bug      </option>
+                <option value=" Ghost    ">Ghost    </option>
+                <option value=" Steel    ">Steel    </option>
+                <option value=" Fire     ">Fire     </option>
+                <option value=" Water    ">Water    </option>
+                <option value=" Grass    ">Grass    </option>
+                <option value=" Electric ">Electric </option>
+                <option value=" Psychic  ">Psychic  </option>
+                <option value=" Ice      ">Ice      </option>
+                <option value=" Dragon   ">Dragon   </option>
+            </select>
+            <a class="party_title" href="./pokedex.html">View Pokedex</a>
+        </div>
+    </form>
+    <div class="report_card">
+        <table class="" id="table">
+            <thead>
+                <th>Number</th>
+                <th>Sprite</th>
+                <th>Name</th>
+                <th>Type 1</th>
+                <th>Type 2</th>
+                <th>Evolves From</th>
+                <th>Evolves Into</th>
+            </thead>
+            <tbody>
+                <tr class="">
+                    <td class="table-cell">#039</td>
+                    <td>
+                        <img class="table-image" src="../img/pkmn_039.png">
+                    </td>
+                    <td class="table-cell">Jigglypuff</td>
+                    <td class="table-cell Normal  ">Normal  </td>
+                    <td class="table-cell ">None</td>
+                    <td class="table-cell">N/A</td>
+                    <td class="table-cell">N/A</td>
+                </tr>
+                <tr class="">
+                    <td class="table-cell">#057</td>
+                    <td>
+                        <img class="table-image" src="../img/pkmn_057.png">
+                    </td>
+                    <td class="table-cell">Primape</td>
+                    <td class="table-cell Fighting">Fighting</td>
+                    <td class="table-cell ">None</td>
+                    <td class="table-cell">N/A</td>
+                    <td class="table-cell">N/A</td>
+                </tr>
+                <tr class="">
+                    <td class="table-cell">#012</td>
+                    <td>
+                        <img class="table-image" src="../img/pkmn_012.png">
+                    </td>
+                    <td class="table-cell">Butterfree</td>
+                    <td class="table-cell Bug     ">Bug</td>
+                    <td class="table-cell Flying  ">Flying  </td>
+                    <td class="table-cell">N/A</td>
+                    <td class="table-cell">N/A</td>
+                </tr>
+                <tr class="">
+                    <td class="table-cell">#024</td>
+                    <td>
+                        <img class="table-image" src="../img/pkmn_024.png">
+                    </td>
+                    <td class="table-cell">Arbok</td>
+                    <td class="table-cell Poison ">Poison  </td>
+                    <td class="table-cell ">None</td>
+                    <td class="table-cell">N/A</td>
+                    <td class="table-cell">N/A</td>
+                </tr>
+                <tr class="">
+                    <td class="table-cell">#051</td>
+                    <td>
+                        <img class="table-image" src="../img/pkmn_051.png">
+                    </td>
+                    <td class="table-cell">Dugtrio</td>
+                    <td class="table-cell Ground  ">Ground  </td>
+                    <td class="table-cell ">None</td>
+                    <td class="table-cell">N/A</td>
+                    <td class="table-cell">N/A</td>
+                </tr>
+                <tr class="">
+                    <td class="table-cell">#076</td>
+                    <td>
+                        <img class="table-image" src="../img/pkmn_076.png">
+                    </td>
+                    <td class="table-cell">Golem</td>
+                    <td class="table-cell Rock  ">Rock  </td>
+                    <td class="table-cell Ground">Ground</td>
+                    <td class="table-cell">N/A</td>
+                    <td class="table-cell">N/A</td>
+                </tr>
+                <tr class="">
+                    <td class="table-cell">#047</td>
+                    <td>
+                        <img class="table-image" src="../img/pkmn_047.png">
+                    </td>
+                    <td class="table-cell">Parasect</td>
+                    <td class="table-cell Bug  ">Bug  </td>
+                    <td class="table-cell Grass">Grass</td>
+                    <td class="table-cell">N/A</td>
+                    <td class="table-cell">N/A</td>
+                </tr>
+                <tr class="">
+                    <td class="table-cell">#094</td>
+                    <td>
+                        <img class="table-image" src="../img/pkmn_094.png">
+                    </td>
+                    <td class="table-cell">Gengar</td>
+                    <td class="table-cell Ghost  ">Ghost  </td>
+                    <td class="table-cell Poison">Poison</td>
+                    <td class="table-cell">N/A</td>
+                    <td class="table-cell">N/A</td>
+                </tr>
+                <tr class="">
+                    <td class="table-cell">#082</td>
+                    <td>
+                        <img class="table-image" src="../img/pkmn_082.png">
+                    </td>
+                    <td class="table-cell">Magneton</td>
+                    <td class="table-cell Electric  ">Electric  </td>
+                    <td class="table-cell ">None</td>
+                    <td class="table-cell">N/A</td>
+                    <td class="table-cell">N/A</td>
+                </tr>
+                <tr class="">
+                    <td class="table-cell">#078</td>
+                    <td>
+                        <img class="table-image" src="../img/pkmn_078.png">
+                    </td>
+                    <td class="table-cell">Ponyta</td>
+                    <td class="table-cell Fire  ">Fire  </td>
+                    <td class="table-cell ">None</td>
+                    <td class="table-cell">N/A</td>
+                    <td class="table-cell">N/A</td>
+                </tr>
+                <tr class="">
+                    <td class="table-cell">#009</td>
+                    <td>
+                        <img class="table-image" src="../img/pkmn_009.png">
+                    </td>
+                    <td class="table-cell">Blastoise</td>
+                    <td class="table-cell Water  ">Water  </td>
+                    <td class="table-cell ">None</td>
+                    <td class="table-cell">N/A</td>
+                    <td class="table-cell">N/A</td>
+                </tr>
+                <tr class="">
+                    <td class="table-cell">#045</td>
+                    <td>
+                        <img class="table-image" src="../img/pkmn_045.png">
+                    </td>
+                    <td class="table-cell">Vileplume</td>
+                    <td class="table-cell Grass  ">Grass  </td>
+                    <td class="table-cell Poison">Poison</td>
+                    <td class="table-cell">N/A</td>
+                    <td class="table-cell">N/A</td>
+                </tr>
+                <tr class="">
+                    <td class="table-cell">#025</td>
+                    <td>
+                        <img class="table-image" src="../img/pkmn_025.png">
+                    </td>
+                    <td class="table-cell">Pikachu</td>
+                    <td class="table-cell Electric  ">Electric  </td>
+                    <td class="table-cell ">None</td>
+                    <td class="table-cell">N/A</td>
+                    <td class="table-cell">N/A</td>
+                </tr>
+                <tr class="">
+                    <td class="table-cell">#063</td>
+                    <td>
+                        <img class="" src="../img/pkmn_063.png">
+                    </td>
+                    <td class="table-cell">Abra</td>
+                    <td class="table-cell Psychic  ">Psychic  </td>
+                    <td class="table-cell ">None</td>
+                    <td class="table-cell">N/A</td>
+                    <td class="table-cell">N/A</td>
+                </tr>
+                <tr class="">
+                    <td class="table-cell">#144</td>
+                    <td>
+                        <img class="" src="../img/pkmn_144.png">
+                    </td>
+                    <td class="table-cell">Articuno</td>
+                    <td class="table-cell Ice  ">Ice  </td>
+                    <td class="table-cell Flying">Flying</td>
+                    <td class="table-cell">N/A</td>
+                    <td class="table-cell">N/A</td>
+                </tr>
+                <tr class="">
+                    <td class="table-cell">#148</td>
+                    <td>
+                        <img class="" src="../img/pkmn_148.png">
+                    </td>
+                    <td class="table-cell">Dragonair</td>
+                    <td class="table-cell Dragon  ">Dragon  </td>
+                    <td class="table-cell ">None</td>
+                    <td class="table-cell">N/A</td>
+                    <td class="table-cell">N/A</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
