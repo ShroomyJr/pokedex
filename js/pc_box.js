@@ -17,6 +17,7 @@ $(document).ready(function () {
     });
 
     $(".context-menu li").click(function () {
+        // print($(this).data());
         $(".context-menu").hide(100);
     });
 

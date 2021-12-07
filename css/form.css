@@ -38,3 +38,19 @@ input[type=submit] {
     border: gray 5px solid;
     font-family: 'Press Start 2P', cursive;
 }
+
+
+select {
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    margin: auto;
+    background-color: white;
+    border: 5px solid darkgray;
+    padding: 20px;
+    width: 400px;
+    text-align: center;
+    font-size: larger;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: 'Press Start 2P', cursive;
+}
