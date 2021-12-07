@@ -54,3 +54,25 @@
 .Fairy {
     background-color:  #D685AD
 }
+
+
+/*
+Navbar Styling
+*/
+.navbar {
+    border-radius: 10px;
+    margin: 10px;
+    box-sizing: border-box;
+    background-color: white;
+    border: 5px solid darkgray;
+    height: 50px;
+    font-size: larger;
+    position: relative;
+    display: flex;
+}
+
+.navbar-item {
+    margin: 10px;
+    text-decoration: underline;
+    color: black;
+}

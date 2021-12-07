@@ -1,14 +1,12 @@
 body {
-    background: red;
+    background-color: #ffc86a;
     font-family: 'Press Start 2P', cursive;
     color: white;
   }
 
 .card-grid {
-    /* margin: auto; */
     display: flex;
     flex-flow: row wrap;
-    /* flex-direction: row; */
 }
 
 
@@ -17,7 +15,7 @@ body {
     height: 200px;
     position: relative;
     border-radius: 1rem;
-    margin: 20px;
+    margin: 5px;
 }
 
 .card:hover {
@@ -42,4 +40,28 @@ img {
     width: 150px;
     bottom: 0;
     right: 0;
+}
+
+label {
+    color: black;
+}
+
+option {
+    
+    font-family: 'Press Start 2P', cursive;
+}
+
+.party_title {
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    margin: auto;
+    background-color: white;
+    border: 5px solid darkgray;
+    padding: 20px;
+    width: 400px;
+    text-align: center;
+    font-size: larger;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: 'Press Start 2P', cursive;
 }

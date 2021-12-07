@@ -11,6 +11,11 @@
 </head>
 
 <body>
+    <div class="navbar">
+        <a class="navbar-item" href="./pokedex.html">Pokedex</a>
+        <a class="navbar-item" href="./pcbox.html">PC Box</a>
+        <a class="navbar-item" href="./matchups.html">Matchups</a>
+    </div>
     <div class="row">
         <div class="col party">
             <div class="party_title">Party</div>
@@ -36,7 +41,24 @@
             <div name="slot6" class="slot"></div>
         </div>
         <div class="col">
-            <div class="box_title">Red's Pokemon Box</div>
+            <form class="row">
+                <label for="trainer">Trainer:</label>
+                <select class="box_title" name="trainer">
+                    <option value="red">Red's Pokemon Box</option>
+                    <option value="jake">Jake's Pokemon Box</option>
+                    <option value="luke">Luke's Pokemon Box</option>
+                </select>
+                <label for="sort">Sort:</label>
+                <select id="sort" name="sort" class="box_title">
+                    <option value="Sort By"  disabled>Sort By</option>
+                    <option default value="level asc">Level Asc</option>
+                    <option value="level desc">Level Desc</option>
+                    <option value="name asc">Name Asc</option>
+                    <option value="name desc">Name Desc</option>
+                    <option value="number asc">Number Asc</option>
+                    <option value="number desc">Number Desc</option>
+                </select>
+            </form>
             <div class="card-grid">
                 <div class="card">
                     <img class="box_image" src="../img/pkmn_039.png">
@@ -89,6 +111,9 @@
             </div>
         </div>
     </div>
+    <a class="catch_pokemon" href="./catch_pokemon.html">
+        <div class="catch_text">Catch A New Pokemon!</div>
+    </a>
     <ul class='context-menu'>
         <li data-action="remove">Remove from party</li>
         <li data-action="add">Add to party</li>
