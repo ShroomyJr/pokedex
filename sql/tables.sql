@@ -8,10 +8,10 @@ CREATE TABLE `Trainers` (
 CREATE TABLE `Pokemon` (
 	`Pokemon_ID` INT NOT NULL AUTO_INCREMENT,
 	`Pokemon_Name` VARCHAR(32) NOT NULL,
-	`Pokemon_Level` INT NOT NULL DEFAULT `0`,
+	`Pokemon_Level` INT NOT NULL DEFAULT '0',
 	`Trainer_Gender` VARCHAR(8) NOT NULL,
-	`Pokemon_Health` INT NOT NULL DEFAULT `100`,
-	`Pokemon_Exp` INT NOT NULL DEFAULT `0`,
+	`Pokemon_Health` INT NOT NULL DEFAULT '100',
+	`Pokemon_Exp` INT NOT NULL DEFAULT '0',
 	`Pokemon_Species_ID` INT NOT NULL,
 	`Trainer_ID` INT NOT NULL,
 	PRIMARY KEY (`Pokemon_ID`),
@@ -32,7 +32,7 @@ CREATE TABLE `Party_Pokemon` (
 CREATE TABLE `Pokemon_Species` (
 	`Pokemon_Species_ID` INT NOT NULL AUTO_INCREMENT,
 	`Pokemon_Species_Name` VARCHAR(32) NOT NULL,
-	`Pokemon_Species_Description` VARCHAR(240) DEFAULT `Not much is known about this creature.`,
+	`Pokemon_Species_Description` VARCHAR(240) DEFAULT 'Not much is known about this creature.',
 	`Evolves_From` VARCHAR(32) NOT NULL,
 	`Evolves_Into` VARCHAR(32) NOT NULL,
 	PRIMARY KEY (`Pokemon_Species_ID`)
@@ -54,7 +54,9 @@ CREATE TABLE `Pokemon_Moves` (
 	`Moves_ID` INT NOT NULL,
 	`Pokemon_ID` INT NOT NULL,
 	`Move_Slot` INT NOT NULL DEFAULT '1',
-	PRIMARY KEY (`Pokemon_Moves_ID`) FOREIGN KEY (`Moves_ID`) REFERENCES Types(`Moves_ID`) FOREIGN KEY (`Pokemon_ID`) REFERENCES Pokemon(`Pokemon_Species_ID`)
+	PRIMARY KEY (`Pokemon_Moves_ID`),
+	FOREIGN KEY (`Moves_ID`) REFERENCES Moves(`Moves_ID`),
+	FOREIGN KEY (`Pokemon_ID`) REFERENCES Pokemon(`Pokemon_ID`)
 );
 
 CREATE TABLE `Pokemon_Types` (
