@@ -12,9 +12,9 @@
 
 <body>
     <div class="navbar">
-        <a class="navbar-item" href="./pokedex.html">Pokedex</a>
-        <a class="navbar-item" href="./pcbox.html">PC Box</a>
-        <a class="navbar-item" href="./matchups.html">Matchups</a>
+        <a class="navbar-item" href="./pokedex.php">Pokedex</a>
+        <a class="navbar-item" href="./pcbox.php">PC Box</a>
+        <a class="navbar-item" href="./matchups.php">Matchups</a>
     </div>
     <form>
         <div class="row">
@@ -46,7 +46,7 @@
                 <option value=" Ice      ">Ice </option>
                 <option value=" Dragon   ">Dragon </option>
             </select>
-            <a class="party_title" href="./pokedex_report.html">View Report</a>
+            <a class="party_title" href="./pokedex_report.php">View Report</a>
         </div>
     </form>
     <div class="card-grid">
