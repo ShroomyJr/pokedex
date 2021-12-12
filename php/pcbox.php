@@ -38,7 +38,7 @@ if (isset($_POST['Submit']) && $_POST['Submit'] == 'create trainer') {
         $_SESSION["Trainer_Gender"] = $trainer['Trainer_Gender'];
         $_SESSION["Trainer_ID"] = $trainer['Trainer_ID'];
         echo "New record created successfully";
-        echo ($trainer['Trainer_Name'].$trainer['Trainer_Gender']);
+        echo ($trainer['Trainer_Name'] . $trainer['Trainer_Gender']);
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
@@ -51,12 +51,11 @@ if (isset($_POST['Submit']) && $_POST['Submit'] == 'create trainer') {
         $_SESSION["Trainer_Name"] = $trainer['Trainer_Name'];
         $_SESSION["Trainer_Gender"] = $trainer['Trainer_Gender'];
         $_SESSION["Trainer_ID"] = $trainer['Trainer_ID'];
-        echo ($trainer['Trainer_Name']."\t".$trainer['Trainer_Gender']);
+        echo ($trainer['Trainer_Name'] . "\t" . $trainer['Trainer_Gender']);
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
-}
-else {
+} else {
     $trainer = $_SESSION;
     echo $_SESSION['name'];
 }
@@ -71,26 +70,28 @@ else {
     <div class="row">
         <div class="col party">
             <div class="party_title">Party</div>
-            <div name="slot1" class="slot">
-                <img class="party_image" src="../img/pkmn_001.png">
-                <div class="col">
-                    <div class="party_pokemon_name">Bulbasoar</div>
-                    <div class="lvl">Lv.30</div>
-                </div>
-            </div>
-            <div name="slot2" class="slot">
-                <img class="party_image" src="../img/pkmn_066.png">
-                <div class="party_pokemon_name">Machamp</div>
-                <div class="lvl">Lv.23</div>
-            </div>
-            <div name="slot3" class="slot">
-                <img class="party_image" src="../img/pkmn_039.png">
-                <div class="party_pokemon_name">Jigglypuff</div>
-                <div class="lvl">Lv.1</div>
-            </div>
-            <div name="slot4" class="slot"></div>
-            <div name="slot5" class="slot"></div>
-            <div name="slot6" class="slot"></div>
+            <?php
+            $sql = "SELECT p.pokemon_name, p.pokemon_level, p.pokemon_species_id
+                FROM pokedex.party_pokemon pp, pokedex.pokemon p 
+                WHERE pp.Trainer_ID = {$_SESSION['trainer_id']} AND pp.Pokemon_ID = p.Pokemon_ID";
+            $party_pokemon = $conn->query($sql)->fetch_all();
+
+            for ($i = 1; $i <= 6; $i++) {
+                if ($party_pokemon[$i]) {
+                    $pokemon = $party_pokemon[$i];
+                    $number = sprintf('%03d', $pokemon[1]);
+                    echo "<div name=\"slot1\" class=\"slot\">
+                    <img class=\"party_image\" src=\"../img/pkmn_{$number}.png\">
+                    <div class=\"col\">
+                        <div class=\"party_pokemon_name\">{$pokemon[0]}</div>
+                        <div class=\"lvl\">Lv.{$pokemon[2]}</div>
+                    </div>
+                </div>";
+                } else {
+                    echo " <div name=\"slot{$i}\" class=\"slot\"></div>";
+                }
+            }
+            ?>
         </div>
         <div class="col">
             <form class="row">
@@ -99,7 +100,6 @@ else {
                     <?php
                     echo "<option value=\"{$trainer['Trainer_ID']}\">{$trainer['Trainer_Name']}</option>";
                     $sql = "SELECT Trainer_Name, Trainer_ID FROM TRAINERS WHERE Trainer_ID != {$trainer['Trainer_ID']}";
-                    $result = $conn->query($sql);
                     $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {
@@ -123,54 +123,17 @@ else {
                 <a class="box_title" href="./pcbox_report.php">View Report</a>
             </form>
             <div class="card-grid">
-                <div class="card">
-                    <img class="box_image" src="../img/pkmn_039.png">
-                </div>
-                <div class="card">
-                    <img class="box_image" src="../img/pkmn_057.png">
-                </div>
-                <div class="card">
-                    <img class="box_image" src="../img/pkmn_012.png">
-                </div>
-                <div class="card">
-                    <img class="box_image" src="../img/pkmn_024.png">
-                </div>
-                <div class="card">
-                    <img class="box_image" src="../img/pkmn_051.png">
-                </div>
-                <div class="card">
-                    <img class="box_image" src="../img/pkmn_076.png">
-                </div>
-                <div class="card">
-                    <img class="box_image" src="../img/pkmn_057.png">
-                </div>
-                <div class="card">
-                    <img class="box_image" src="../img/pkmn_094.png">
-                </div>
-                <div class="card">
-                    <img class="box_image" src="../img/pkmn_082.png">
-                </div>
-                <div class="card">
-                    <img class="box_image" src="../img/pkmn_078.png">
-                </div>
-                <div class="card">
-                    <img class="box_image" src="../img/pkmn_009.png">
-                </div>
-                <div class="card">
-                    <img class="box_image" src="../img/pkmn_045.png">
-                </div>
-                <div class="card">
-                    <img class="box_image" src="../img/pkmn_025.png">
-                </div>
-                <div class="card">
-                    <img class="box_image" src="../img/pkmn_063.png">
-                </div>
-                <div class="card">
-                    <img class="box_image" src="../img/pkmn_144.png">
-                </div>
-                <div class="card">
-                    <img class="box_image" src="../img/pkmn_148.png">
-                </div>
+                <?php
+                $result = $conn->query("SELECT pokemon_species_id FROM pokemon WHERE trainer_id = {$_SESSION['trainer_id']}");
+                if ($result->num_rows > 0) {
+                    while ($pokemon = $result->fetch_assoc()) {
+                        $number = sprintf('%03d', $pokemon['pokemon_species_id']);
+                        echo "<div class=\"card\">
+                            <img class=\"box_image\" src=\"../img/pkmn_{$number}.png\">
+                        </div>";
+                    }
+                }
+                ?>
             </div>
         </div>
     </div>
