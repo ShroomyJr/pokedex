@@ -25,7 +25,7 @@
     ?>
     <div class="navbar">
         <a class="navbar-item" href="./pokedex.php">Pokedex</a>
-        <a class="navbar-item" href="./pcbox.html">PC Box</a>
+        <a class="navbar-item" href="./pcbox.php">PC Box</a>
         <a class="navbar-item" href="./matchups.php">Matchups</a>
     </div>
     <header>Matchups</header>

@@ -64,9 +64,9 @@ else {
 
 <body>
     <div class="navbar">
-        <a class="navbar-item" href="./pokedex.html">Pokedex</a>
-        <a class="navbar-item" href="./pcbox.html">PC Box</a>
-        <a class="navbar-item" href="./matchups.html">Matchups</a>
+        <a class="navbar-item" href="./pokedex.php">Pokedex</a>
+        <a class="navbar-item" href="./pcbox.php">PC Box</a>
+        <a class="navbar-item" href="./matchups.php">Matchups</a>
     </div>
     <div class="row">
         <div class="col party">
@@ -120,7 +120,7 @@ else {
                     <option value="number asc">Number Asc</option>
                     <option value="number desc">Number Desc</option>
                 </select>
-                <a class="box_title" href="./pcbox_report.html">View Report</a>
+                <a class="box_title" href="./pcbox_report.php">View Report</a>
             </form>
             <div class="card-grid">
                 <div class="card">
@@ -174,7 +174,7 @@ else {
             </div>
         </div>
     </div>
-    <a class="catch_pokemon" href="./catch_pokemon.html">
+    <a class="catch_pokemon" href="./catch_pokemon.php">
         <div class="catch_text">Catch A New Pokemon!</div>
     </a>
     <ul class='context-menu'>
