@@ -69,7 +69,23 @@ if (isset($_POST['Submit']) && $_POST['Submit'] == 'Create Trainer') {
     }
 } else {
 }
-print_r($_SESSION['Trainer_Name']);
+$sort_orders = [
+    'level asc' => 'pokemon_level ASC',
+    'level desc' => 'pokemon_level DESC',
+    "name asc" => 'pokemon_name ASC',
+    "name desc" => 'pokemon_name DESC',
+    "number asc" => 'pokemon_species_id ASC',
+    "number desc" => 'pokemon_species_id DESC'
+];
+if (isset($_POST['sort'])) {
+    // print_r($_POST['sort']);
+    $order = $sort_orders[$_POST['sort']];
+} else {
+    $order = $sort_orders['level asc'];
+};
+
+// print_r($order);
+// print_r($_SESSION['Trainer_Name']);
 ?>
 
 <body>
@@ -86,10 +102,8 @@ print_r($_SESSION['Trainer_Name']);
                 FROM pokedex.party_pokemon pp, pokedex.pokemon p 
                 WHERE pp.Trainer_ID = {$_SESSION['Trainer_ID']} AND pp.Pokemon_ID = p.Pokemon_ID";
             $result = $conn->query($sql);
-            // $party_pokemon = $result->fetch_all();
             for ($i = 1; $i <= 6; $i++) {
                 if ($pokemon = $result->fetch_assoc()) {
-                    // $pokemon = $party_pokemon[$i];
                     $number = sprintf('%03d', $pokemon['pokemon_species_id']);
                     echo "<div name=\"slot{$i}\" class=\"slot\" data-id=\"{$pokemon['pokemon_id']}\">
                     <img class=\"party_image\" src=\"../img/pkmn_{$number}.png\">
@@ -124,12 +138,16 @@ print_r($_SESSION['Trainer_Name']);
                 <label for="sort">Sort:</label>
                 <select id="sort" name="sort" class="box_title">
                     <option value="Sort By" disabled>Sort By</option>
-                    <option default value="level asc">Level Asc</option>
-                    <option value="level desc">Level Desc</option>
-                    <option value="name asc">Name Asc</option>
-                    <option value="name desc">Name Desc</option>
-                    <option value="number asc">Number Asc</option>
-                    <option value="number desc">Number Desc</option>
+                    <?php
+                    foreach ($sort_orders as $key => $value) {
+                        $capitalized = ucwords($key);
+                        if ($value == $order) {
+                            echo "<option default selected value=\"{$key}\">{$capitalized}</option>";
+                        } else {
+                            echo "<option value=\"{$key}\">{$capitalized}</option>";
+                        }
+                    }
+                    ?>
                 </select>
                 <input class="box_title" type="submit" name="Submit" value="Select Trainer">
                 <a class="box_title" href="./pcbox_report.php">View Report</a>
@@ -137,7 +155,7 @@ print_r($_SESSION['Trainer_Name']);
             <div class="card-grid">
                 <?php
                 $result = $conn->query("SELECT pokemon_species_id, pokemon_id FROM pokemon p WHERE trainer_id = {$_SESSION['Trainer_ID']}
-                    AND NOT EXISTS (SELECT * FROM party_pokemon pm WHERE pm.pokemon_id = p.pokemon_id)");
+                    AND NOT EXISTS (SELECT * FROM party_pokemon pm WHERE pm.pokemon_id = p.pokemon_id) ORDER BY {$order}");
                 if ($result->num_rows > 0) {
                     while ($pokemon = $result->fetch_assoc()) {
                         $number = sprintf('%03d', $pokemon['pokemon_species_id']);

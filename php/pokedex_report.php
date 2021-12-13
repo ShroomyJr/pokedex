@@ -13,6 +13,23 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
 </head>
 
+<?php
+$servername = "localhost";
+$username = "user";
+$password = "#DigitalMonsters1";
+$dbname = "pokedex";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$types1 = $conn->query("SELECT types_name FROM types");
+$types2 = $conn->query("SELECT types_name FROM types");
+?>
+
 <body>
     <div class="navbar">
         <a class="navbar-item" href="./pokedex.php">Pokedex</a>
@@ -21,33 +38,24 @@
     </div>
     <form>
         <div class="row">
-            <label for="sort">Sort: </label>
-            <select id="sort" name="sort" class="party_title">
-                <option value="Sort By" disabled>Sort By</option>
-                <option value="name asc">Name Asc</option>
-                <option value="name desc">Name Desc</option>
-                <option value="number asc" default>Number Asc</option>
-                <option value="number desc">Number Desc</option>
+            <label for="type">Type 1:</label>
+            <select id="type1" name="type1" class="party_title">
+                <option default selected>All Types</option>
+                <?php
+                while ($type1 = $types1->fetch_assoc()) {
+                    echo "<option value=\"{$type1['types_name']}\">{$type1['types_name']}</option>";
+                }
+
+                ?>
             </select>
-            <label for="type">Type:</label>
-            <select id="type" name="type" class="party_title">
-                <option value="none" default>All Types</option>
-                <option value=" Normal   ">Normal </option>
-                <option value=" Fighting ">Fighting </option>
-                <option value=" Flying   ">Flying </option>
-                <option value=" Poison   ">Poison </option>
-                <option value=" Ground   ">Ground </option>
-                <option value=" Rock     ">Rock </option>
-                <option value=" Bug      ">Bug </option>
-                <option value=" Ghost    ">Ghost </option>
-                <option value=" Steel    ">Steel </option>
-                <option value=" Fire     ">Fire </option>
-                <option value=" Water    ">Water </option>
-                <option value=" Grass    ">Grass </option>
-                <option value=" Electric ">Electric </option>
-                <option value=" Psychic  ">Psychic </option>
-                <option value=" Ice      ">Ice </option>
-                <option value=" Dragon   ">Dragon </option>
+            <label for="type2">Type 2:</label>
+            <select id="type2" name="type2" class="party_title">
+                <option default selected>All Types</option>
+                <?php
+                while ($type2 = $types2->fetch_assoc()) {
+                    echo "<option default selected value=\"{$type2['types_name']}\">{$type2['types_name']}</option>";
+                }
+                ?>
             </select>
             <a class="party_title" href="./pokedex.php">View Pokedex</a>
         </div>
@@ -65,17 +73,6 @@
             </thead>
             <tbody>
                 <?php
-                $servername = "localhost";
-                $username = "user";
-                $password = "#DigitalMonsters1";
-                $dbname = "pokedex";
-
-                // Create connection
-                $conn = new mysqli($servername, $username, $password, $dbname);
-                // Check connection
-                if ($conn->connect_error) {
-                    die("Connection failed: " . $conn->connect_error);
-                }
 
                 $sql = "SELECT ps.pokemon_species_id, ps.pokemon_species_name, ps.evolves_from, ps.evolves_into, 
                 (

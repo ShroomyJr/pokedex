@@ -49,7 +49,18 @@ $(document).ready(function () {
         }
     });
 
-    $("#table").DataTable();
+    var table = $("#table").DataTable();
+    
+    $('#type2').on("change", function(e) {
+        var str = this.value == 'All Types' ? "" : this.value;
+        console.log(str);
+        table.column(4).search(str).draw();
+    });
+    $('#type1').on("change", function(e) {
+        var str = this.value == 'All Types' ? "" : this.value;
+        console.log(str);
+        table.column(3).search(str).draw();
+    });
 
 });
 $(document).bind("mousedown", function (e) {

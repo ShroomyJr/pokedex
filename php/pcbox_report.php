@@ -27,7 +27,25 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-print_r($_SESSION['Trainer_Name']);
+if (isset($_POST['Submit']) && $_POST['Submit'] == 'Select Trainer') {
+    $trainer_id = $_POST['trainer'];
+    $sql = "SELECT Trainer_Name, Trainer_Gender, Trainer_ID FROM TRAINERS WHERE TRAINERS.Trainer_ID = {$_POST['trainer']} LIMIT 1";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        session_unset();
+        $trainer = $result->fetch_assoc();
+        $_SESSION["Trainer_Name"] = $trainer['Trainer_Name'];
+        $_SESSION["Trainer_Gender"] = $trainer['Trainer_Gender'];
+        $_SESSION["Trainer_ID"] = $trainer['Trainer_ID'];
+        // echo ($trainer['Trainer_Name'] . "\t" . $trainer['Trainer_Gender']);
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+}
+// print_r($_SESSION['Trainer_Name']);
+
+$types1 = $conn->query("SELECT types_name FROM types");
+$types2 = $conn->query("SELECT types_name FROM types");
 ?>
 
 <body>
@@ -61,8 +79,7 @@ print_r($_SESSION['Trainer_Name']);
             ?>
         </div>
         <div class="col">
-            <form class="row">
-                <label for="trainer">Trainer:</label>
+            <form class="row" action="" method="POST">
                 <select class="box_title" name="trainer">
                     <?php
                     echo "<option value=\"{$_SESSION['Trainer_ID']}\">{$_SESSION['Trainer_Name']}</option>";
@@ -77,15 +94,24 @@ print_r($_SESSION['Trainer_Name']);
                     }
                     ?>
                 </select>
-                <label for="sort">Sort:</label>
-                <select id="sort" name="sort" class="box_title">
-                    <option value="Sort By" disabled>Sort By</option>
-                    <option default value="level asc">Level Asc</option>
-                    <option value="level desc">Level Desc</option>
-                    <option value="name asc">Name Asc</option>
-                    <option value="name desc">Name Desc</option>
-                    <option value="number asc">Number Asc</option>
-                    <option value="number desc">Number Desc</option>
+                <input class="box_title" type="submit" name="Submit" value="Select Trainer"><label for="type">Type 1:</label>
+                <select id="type1" name="type1" class="box_title">
+                    <option default selected>All Types</option>
+                    <?php
+                    while ($type1 = $types1->fetch_assoc()) {
+                        echo "<option value=\"{$type1['types_name']}\">{$type1['types_name']}</option>";
+                    }
+
+                    ?>
+                </select>
+                <label for="type2">Type 2:</label>
+                <select id="type2" name="type2" class="box_title">
+                    <option default selected>All Types</option>
+                    <?php
+                    while ($type2 = $types2->fetch_assoc()) {
+                        echo "<option default selected value=\"{$type2['types_name']}\">{$type2['types_name']}</option>";
+                    }
+                    ?>
                 </select>
                 <a class="box_title" href="./pcbox.php">View Box</a>
             </form>
@@ -95,9 +121,9 @@ print_r($_SESSION['Trainer_Name']);
                         <th>Number</th>
                         <th>Sprite</th>
                         <th>Name</th>
-                        <th>Level</th>
                         <th>Type 1</th>
                         <th>Type 2</th>
+                        <th>Level</th>
                         <th>Male/Female</th>
                     </thead>
                     <tbody>
@@ -131,9 +157,9 @@ print_r($_SESSION['Trainer_Name']);
                                             <img class=\"table-image\" src=\"../img/pkmn_{$number}.png\">
                                         </td>
                                         <td class=\"table-cell\">{$pokemon['pokemon_name']}</td>
-                                        <td class=\"table-cell\">{$pokemon['pokemon_level']}</td>
                                         <td class=\"table-cell {$pokemon['type_1']}  \">{$pokemon['type_1']} </td>
                                         <td class=\"table-cell {$type_2}  \">{$type_2} </td>
+                                        <td class=\"table-cell\">{$pokemon['pokemon_level']}</td>
                                         <td class=\"table-cell\">{$pokemon['pokemon_gender']}</td>
                                     </tr>";
                             }
