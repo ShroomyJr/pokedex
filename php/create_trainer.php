@@ -9,6 +9,7 @@
 </head>
 
 <?php
+session_unset();
 $servername = "localhost";
 $username = "user";
 $password = "#DigitalMonsters1";
@@ -38,11 +39,8 @@ if ($conn->connect_error) {
                 }
             }
             ?>
-            <!-- <option value="red">Red's Pokemon</option>
-            <option value="jake">Jake's Pokemon</option>
-            <option value="luke">Luke's Pokemon</option> -->
         </select>
-        <input type="submit" name="Submit" value="select trainer">
+        <input type="submit" name="Submit" value="Select Trainer">
     </form>
     <h1>or Create a Trainer!</h1>
     <form action="pcbox.php" method="POST">
@@ -62,6 +60,6 @@ if ($conn->connect_error) {
             </div>
         </div>
         <br>
-        <input type="submit" name="Submit" value="create trainer">
+        <input type="submit" name="Submit" value="Create Trainer">
     </form>
 </body>

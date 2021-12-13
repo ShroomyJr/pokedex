@@ -31,41 +31,45 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-if (isset($_POST['Submit']) && $_POST['Submit'] == 'create trainer') {
+if (isset($_POST['Submit']) && $_POST['Submit'] == 'Create Trainer') {
     $name = $_POST['name'];
     $gender = $_POST['gender'] == "male" ? "♂" : "♀";
     echo "Name: {$name}{$gender}";
 
 
-    $sql = "INSERT INTO TRAINERS (Trainer_Name, Trainer_Gender) VALUES (\"{$_POST['name']}\", \"{$_POST['gender']}\")";
-    $result = $conn->query($sql);
+    $create = "INSERT INTO TRAINERS (Trainer_Name, Trainer_Gender) VALUES (\"{$_POST['name']}\", \"{$_POST['gender']}\")";
+    $create_result = $conn->query($create);
+    $trainer_id = $conn->insert_id;
+
+    $result = $conn->query("SELECT Trainer_Name, Trainer_Gender, Trainer_ID FROM TRAINERS WHERE TRAINERS.Trainer_ID = {$trainer_id} LIMIT 1");
     if ($result->num_rows > 0) {
+        session_unset();
         $trainer = $result->fetch_assoc();
         $_SESSION["Trainer_Name"] = $trainer['Trainer_Name'];
         $_SESSION["Trainer_Gender"] = $trainer['Trainer_Gender'];
         $_SESSION["Trainer_ID"] = $trainer['Trainer_ID'];
         echo "New record created successfully";
-        echo ($trainer['Trainer_Name'] . $trainer['Trainer_Gender']);
+        // echo ($trainer['Trainer_Name'] . $trainer['Trainer_Gender']);
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
-} elseif (isset($_POST['Submit']) && $_POST['Submit'] == 'select trainer') {
+} elseif (isset($_POST['Submit']) && $_POST['Submit'] == 'Select Trainer') {
     $trainer_id = $_POST['trainer'];
     $sql = "SELECT Trainer_Name, Trainer_Gender, Trainer_ID FROM TRAINERS WHERE TRAINERS.Trainer_ID = {$_POST['trainer']} LIMIT 1";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
+        session_unset();
         $trainer = $result->fetch_assoc();
         $_SESSION["Trainer_Name"] = $trainer['Trainer_Name'];
         $_SESSION["Trainer_Gender"] = $trainer['Trainer_Gender'];
         $_SESSION["Trainer_ID"] = $trainer['Trainer_ID'];
-        echo ($trainer['Trainer_Name'] . "\t" . $trainer['Trainer_Gender']);
+        // echo ($trainer['Trainer_Name'] . "\t" . $trainer['Trainer_Gender']);
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
 } else {
-    $trainer = $_SESSION;
-    echo $_SESSION['name'];
 }
+print_r($_SESSION['Trainer_Name']);
 ?>
 
 <body>
@@ -80,7 +84,7 @@ if (isset($_POST['Submit']) && $_POST['Submit'] == 'create trainer') {
             <?php
             $sql = "SELECT p.pokemon_name, p.pokemon_level, p.pokemon_species_id, p.pokemon_id
                 FROM pokedex.party_pokemon pp, pokedex.pokemon p 
-                WHERE pp.Trainer_ID = {$_SESSION['trainer_id']} AND pp.Pokemon_ID = p.Pokemon_ID";
+                WHERE pp.Trainer_ID = {$_SESSION['Trainer_ID']} AND pp.Pokemon_ID = p.Pokemon_ID";
             $result = $conn->query($sql);
             // $party_pokemon = $result->fetch_all();
             for ($i = 1; $i <= 6; $i++) {
@@ -101,12 +105,12 @@ if (isset($_POST['Submit']) && $_POST['Submit'] == 'create trainer') {
             ?>
         </div>
         <div class="col">
-            <form class="row">
+            <form class="row" action="" method="POST">
                 <label for="trainer">Trainer:</label>
                 <select class="box_title" name="trainer">
                     <?php
-                    echo "<option value=\"{$trainer['Trainer_ID']}\">{$trainer['Trainer_Name']}</option>";
-                    $sql = "SELECT Trainer_Name, Trainer_ID FROM TRAINERS WHERE Trainer_ID != {$trainer['Trainer_ID']}";
+                    echo "<option value=\"{$_SESSION['Trainer_ID']}\">{$_SESSION['Trainer_Name']}</option>";
+                    $sql = "SELECT Trainer_Name, Trainer_ID FROM TRAINERS WHERE Trainer_ID != {$_SESSION['Trainer_ID']}";
                     $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {
@@ -127,11 +131,12 @@ if (isset($_POST['Submit']) && $_POST['Submit'] == 'create trainer') {
                     <option value="number asc">Number Asc</option>
                     <option value="number desc">Number Desc</option>
                 </select>
+                <input class="box_title" type="submit" name="Submit" value="Select Trainer">
                 <a class="box_title" href="./pcbox_report.php">View Report</a>
             </form>
             <div class="card-grid">
                 <?php
-                $result = $conn->query("SELECT pokemon_species_id, pokemon_id FROM pokemon p WHERE trainer_id = {$_SESSION['trainer_id']}
+                $result = $conn->query("SELECT pokemon_species_id, pokemon_id FROM pokemon p WHERE trainer_id = {$_SESSION['Trainer_ID']}
                     AND NOT EXISTS (SELECT * FROM party_pokemon pm WHERE pm.pokemon_id = p.pokemon_id)");
                 if ($result->num_rows > 0) {
                     while ($pokemon = $result->fetch_assoc()) {

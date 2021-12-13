@@ -33,7 +33,7 @@ if (isset($_POST['Submit'])) {
         Pokemon_Name, Pokemon_Level, Pokemon_Gender, Pokemon_Health, Pokemon_Species_ID, Trainer_ID
     ) VALUES (
         \"{$_POST['pokemon_name']}\", \"{$_POST['level']}\", \"{$genders[$rand_gender]}\", 
-        \"{$_POST['health']}\", \"{$_POST['pokemon_id']}\", \"{$_SESSION['trainer_id']}\"
+        \"{$_POST['health']}\", \"{$_POST['pokemon_id']}\", \"{$_SESSION['Trainer_ID']}\"
     )";
     $result = $conn->query($sql);
     $pokemon_id = $conn->insert_id;
@@ -44,11 +44,11 @@ if (isset($_POST['Submit'])) {
     }
     // Start transaction to add to party
     $conn->autocommit(FALSE);
-    $result = $conn->query("SELECT COUNT(*) AS slots FROM party_pokemon WHERE Trainer_ID = {$_SESSION['trainer_id']}");
+    $result = $conn->query("SELECT COUNT(*) AS slots FROM party_pokemon WHERE Trainer_ID = {$_SESSION['Trainer_ID']}");
     $slots = $result->fetch_assoc()['slots'];
     if ($slots < 6) {
         $slot = $slots + 1;
-        $conn->query("INSERT INTO party_pokemon (Trainer_ID, Pokemon_ID, Party_Slot)  VALUES ({$_SESSION['trainer_id']}, {$pokemon_id}, {$slot})");
+        $conn->query("INSERT INTO party_pokemon (Trainer_ID, Pokemon_ID, Party_Slot)  VALUES ({$_SESSION['Trainer_ID']}, {$pokemon_id}, {$slot})");
         $conn->commit();
     } else {
         $conn->rollback();
@@ -161,12 +161,12 @@ if (isset($_POST['Submit'])) {
             </div>
         </form>
         <div class="col">
-            <div class="party_title"><?php echo $_SESSION['name'] ?>'s Party</div>
+            <div class="party_title"><?php echo $_SESSION['Trainer_Name'] ?>'s Party</div>
             <div class="party">
                 <?php
                 $sql = "SELECT p.pokemon_name, p.pokemon_level, p.pokemon_health, p.pokemon_species_id
                 FROM pokedex.party_pokemon pp, pokedex.pokemon p 
-                WHERE pp.Trainer_ID = {$_SESSION['trainer_id']} AND pp.Pokemon_ID = p.Pokemon_ID";
+                WHERE pp.Trainer_ID = {$_SESSION['Trainer_ID']} AND pp.Pokemon_ID = p.Pokemon_ID";
                 $party_pokemon = $conn->query($sql);
                 ?>
                 <div class="col">

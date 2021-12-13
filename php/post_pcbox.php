@@ -19,7 +19,7 @@ if (isset($_POST['ajax']) && isset($_POST['action'])) {
     if ($action == 'name' && isset($_POST['new_name'])) {
         echo $_POST['new_name'];
     } elseif ($action == 'release') {
-        $sql = "DELETE FROM pokemon WHERE trainer_id = {$_SESSION['trainer_id']} AND  pokemon_id = {$_POST['pokemon_id']};";
+        $sql = "DELETE FROM pokemon WHERE trainer_id = {$_SESSION['Trainer_ID']} AND  pokemon_id = {$_POST['pokemon_id']};";
         if ($conn->query($sql) == TRUE && $con->affected_rows > 0) {
             echo "Pokemon Released";
         } else {
@@ -27,18 +27,18 @@ if (isset($_POST['ajax']) && isset($_POST['action'])) {
         }
     } elseif ($action == 'add') {
         $conn->autocommit(FALSE);
-        $result = $conn->query("SELECT COUNT(*) AS slots FROM party_pokemon WHERE Trainer_ID = {$_SESSION['trainer_id']}");
+        $result = $conn->query("SELECT COUNT(*) AS slots FROM party_pokemon WHERE Trainer_ID = {$_SESSION['Trainer_ID']}");
         $slots = $result->fetch_assoc()['slots'];
         if ($slots < 6) {
             $slot = $slots + 1;
-            $conn->query("INSERT INTO party_pokemon (Trainer_ID, Pokemon_ID, Party_Slot)  VALUES ({$_SESSION['trainer_id']}, {$_POST['pokemon_id']}, {$slot})");
+            $conn->query("INSERT INTO party_pokemon (Trainer_ID, Pokemon_ID, Party_Slot)  VALUES ({$_SESSION['Trainer_ID']}, {$_POST['pokemon_id']}, {$slot})");
             $conn->commit();
         } else {
             $conn->rollback();
         }
         $conn->autocommit(TRUE);
     } elseif ($action == 'remove') {
-        $sql = "DELETE FROM party_pokemon WHERE trainer_id = {$_SESSION['trainer_id']} AND  pokemon_id = {$_POST['pokemon_id']}";
+        $sql = "DELETE FROM party_pokemon WHERE trainer_id = {$_SESSION['Trainer_ID']} AND  pokemon_id = {$_POST['pokemon_id']}";
         if ($conn->query($sql) == TRUE && $con->affected_rows > 0) {
             echo "Party Pokemon Deleted";
         } else {

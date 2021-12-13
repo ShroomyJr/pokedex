@@ -27,7 +27,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-print_r($_SESSION['name']);
+print_r($_SESSION['Trainer_Name']);
 ?>
 
 <body>
@@ -42,7 +42,7 @@ print_r($_SESSION['name']);
             <?php
             $sql = "SELECT p.pokemon_name, p.pokemon_level, p.pokemon_species_id
                 FROM pokedex.party_pokemon pp, pokedex.pokemon p 
-                WHERE pp.Trainer_ID = {$_SESSION['trainer_id']} AND pp.Pokemon_ID = p.Pokemon_ID";
+                WHERE pp.Trainer_ID = {$_SESSION['Trainer_ID']} AND pp.Pokemon_ID = p.Pokemon_ID";
             $result = $conn->query($sql);
             for ($i = 1; $i <= 6; $i++) {
                 if ($pokemon = $result->fetch_assoc()) {
@@ -65,8 +65,8 @@ print_r($_SESSION['name']);
                 <label for="trainer">Trainer:</label>
                 <select class="box_title" name="trainer">
                     <?php
-                    echo "<option value=\"{$_SESSION['trainer_id']}\">{$_SESSION['Trainer_Name']}</option>";
-                    $sql = "SELECT Trainer_Name, Trainer_ID FROM TRAINERS WHERE Trainer_ID != {$_SESSION['trainer_id']}";
+                    echo "<option value=\"{$_SESSION['Trainer_ID']}\">{$_SESSION['Trainer_Name']}</option>";
+                    $sql = "SELECT Trainer_Name, Trainer_ID FROM TRAINERS WHERE Trainer_ID != {$_SESSION['Trainer_ID']}";
                     $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {
@@ -116,7 +116,7 @@ print_r($_SESSION['name']);
                         AND pt.types_id = t.types_id
                         )) AS type_2
                         FROM pokemon p, pokemon_species ps, pokemon_types pt
-                        WHERE trainer_id = {$_SESSION['trainer_id']}
+                        WHERE trainer_id = {$_SESSION['Trainer_ID']}
                         AND p.pokemon_species_id = ps.pokemon_species_id
                         AND pt.pokemon_species_id = ps.pokemon_species_id
                         GROUP BY ps.pokemon_species_id
