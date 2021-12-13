@@ -176,6 +176,6 @@ if (isset($_POST['sort'])) {
         <li data-action="add">Add to party</li>
         <li data-action="release">Release pokemon</li>
         <li data-action="status">Check status</li>
-        <li data-action="name">Change name</li>
+        <li data-action="rename">Change name</li>
     </ul>
 </body>

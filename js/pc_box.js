@@ -21,15 +21,16 @@ $(document).ready(function () {
         $(".context-menu").hide(100);
         var pokemon_id = $('.context-menu').data('id');
         var action = $(e.target).data('action');
+        console.log(action);
         if (action == 'status') {
             location.assign('status.php?pokemon-id='+pokemon_id);
         } 
-        else if (action == 'name') {
-            var new_name =  prompt("Enter a New Name", "");
+        else if (action == 'rename') {
+            var answer =  prompt("Enter a New Name", "");
             request = $.ajax({
                 url: 'post_pcbox.php',
                 type: 'post',
-                data: { ajax: 1, name: action, new_name: new_name, pokemon_id: pokemon_id },
+                data: { ajax: 1, action: action, new_name: answer, pokemon_id: pokemon_id },
                 success: function (response) {
                     console.log(response);
                     location.reload();

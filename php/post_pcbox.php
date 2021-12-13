@@ -1,8 +1,7 @@
 <?php
+session_start();
 // Handle AJAX request (start)
 if (isset($_POST['ajax']) && isset($_POST['action'])) {
-
-    session_start();
     $servername = "localhost";
     $username = "user";
     $password = "#DigitalMonsters1";
@@ -14,13 +13,11 @@ if (isset($_POST['ajax']) && isset($_POST['action'])) {
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-
     $action = $_POST['action'];
-    if ($action == 'name' && isset($_POST['new_name'])) {
-        echo $_POST['new_name'];
-    } elseif ($action == 'release') {
+    echo $action . $_POST['pokemon_id'];
+    if ($action == 'release') {
         $sql = "DELETE FROM pokemon WHERE trainer_id = {$_SESSION['Trainer_ID']} AND  pokemon_id = {$_POST['pokemon_id']};";
-        if ($conn->query($sql) == TRUE && $con->affected_rows > 0) {
+        if ($conn->query($sql) == TRUE && $conn->affected_rows > 0) {
             echo "Pokemon Released";
         } else {
             echo "Error: " . $sql . "<br>" . $con->error;
@@ -39,13 +36,20 @@ if (isset($_POST['ajax']) && isset($_POST['action'])) {
         $conn->autocommit(TRUE);
     } elseif ($action == 'remove') {
         $sql = "DELETE FROM party_pokemon WHERE trainer_id = {$_SESSION['Trainer_ID']} AND  pokemon_id = {$_POST['pokemon_id']}";
-        if ($conn->query($sql) == TRUE && $con->affected_rows > 0) {
+        if ($conn->query($sql) == TRUE && $conn->affected_rows > 0) {
             echo "Party Pokemon Deleted";
         } else {
             echo "Error: " . $sql . "<br>" . $con->error;
         }
+    } elseif ($action == 'rename') {
+        echo $_POST['new_name'];
+        $sql = "UPDATE pokemon SET pokemon_name = '{$_POST['new_name']}' WHERE pokemon_id = {$_POST['pokemon_id']};";
+        if ($conn->query($sql) == TRUE) {
+            echo "Pokemon Renamed";
+        } else {
+            echo "Error: " . $sql . "<br>" . $con->error;
+        }
     }
-    echo $_POST['action'] . $_POST['pokemon_id'];
-    exit;
+    exit($action);
 }
 // Handle AJAX request (end)

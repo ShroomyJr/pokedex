@@ -170,8 +170,7 @@ if (isset($_POST['Submit'])) {
                 $party_pokemon = $conn->query($sql);
                 ?>
                 <div class="col">
-                    <div name="slot1" class="slot">
-                        <?php
+                    <div name="slot1" class="slot"><?php
                         if ($party_pokemon->num_rows >= 1) {
                             $pokemon = $party_pokemon->fetch_assoc();
                             $number = sprintf('%03d', $pokemon['pokemon_species_id']);
@@ -181,10 +180,8 @@ if (isset($_POST['Submit'])) {
                             <progress id=\"health\" value=\"{$pokemon['pokemon_health']}\" ></progress>
                             <div class=\"health\"> {$pokemon['pokemon_health']} / {$pokemon['pokemon_health']}</div>";
                         }
-                        ?>
-                    </div>
-                    <div name="slot3" class="slot">
-                        <?php
+                    ?></div>
+                    <div name="slot3" class="slot"><?php
                         if ($party_pokemon->num_rows >= 3) {
                             $pokemon = $party_pokemon->fetch_assoc();
                             $number = sprintf('%03d', $pokemon['pokemon_species_id']);
@@ -194,10 +191,8 @@ if (isset($_POST['Submit'])) {
                             <progress id=\"health\" value=\"{$pokemon['pokemon_health']}\" ></progress>
                             <div class=\"health\"> {$pokemon['pokemon_health']} / {$pokemon['pokemon_health']}</div>";
                         }
-                        ?>
-                    </div>
-                    <div name="slot5" class="slot">
-                        <?php
+                    ?></div>
+                    <div name="slot5" class="slot"><?php
                         if ($party_pokemon->num_rows >= 5) {
                             $pokemon = $party_pokemon->fetch_assoc();
                             $number = sprintf('%03d', $pokemon['pokemon_species_id']);
@@ -207,13 +202,11 @@ if (isset($_POST['Submit'])) {
                             <progress id=\"health\" value=\"{$pokemon['pokemon_health']}\" ></progress>
                             <div class=\"health\"> {$pokemon['pokemon_health']} / {$pokemon['pokemon_health']}</div>";
                         }
-                        ?>
-                    </div>
+                    ?></div>
                 </div>
                 <div class="col">
                     <div class="spacer"></div>
-                    <div name="slot2" class="slot">
-                        <?php
+                    <div name="slot2" class="slot"><?php
                         if ($party_pokemon->num_rows >= 2) {
                             $pokemon = $party_pokemon->fetch_assoc();
                             $number = sprintf('%03d', $pokemon['pokemon_species_id']);
@@ -223,10 +216,8 @@ if (isset($_POST['Submit'])) {
                             <progress id=\"health\" value=\"{$pokemon['pokemon_health']}\" ></progress>
                             <div class=\"health\"> {$pokemon['pokemon_health']} / {$pokemon['pokemon_health']}</div>";
                         }
-                        ?>
-                    </div>
-                    <div name="slot4" class="slot">
-                        <?php
+                    ?></div>
+                    <div name="slot4" class="slot"><?php
                         if ($party_pokemon->num_rows >= 4) {
                             $pokemon = $party_pokemon->fetch_assoc();
                             $number = sprintf('%03d', $pokemon['pokemon_species_id']);
@@ -236,10 +227,8 @@ if (isset($_POST['Submit'])) {
                             <progress id=\"health\" value=\"{$pokemon['pokemon_health']}\" ></progress>
                             <div class=\"health\"> {$pokemon['pokemon_health']} / {$pokemon['pokemon_health']}</div>";
                         }
-                        ?>
-                    </div>
-                    <div name="slot6" class="slot">
-                        <?php
+                        ?></div>
+                    <div name="slot6" class="slot"><?php
                         if ($party_pokemon->num_rows >= 6) {
                             $pokemon = $party_pokemon->fetch_assoc();
                             $number = sprintf('%03d', $pokemon['pokemon_species_id']);
@@ -249,8 +238,7 @@ if (isset($_POST['Submit'])) {
                             <progress id=\"health\" value=\"{$pokemon['pokemon_health']}\" ></progress>
                             <div class=\"health\"> {$pokemon['pokemon_health']} / {$pokemon['pokemon_health']}</div>";
                         }
-                        ?>
-                    </div>
+                    ?></div>
                 </div>
             </div>
         </div>
