@@ -19,15 +19,28 @@ $(document).ready(function () {
     $(".context-menu li").click(function (e) {
         // print($(this).data());
         $(".context-menu").hide(100);
-        var pokemon_species_id = $('.context-menu').data('id');
+        var pokemon_id = $('.context-menu').data('id');
         var action = $(e.target).data('action');
         if (action == 'status') {
-            location.assign('status.php?pokemon-id='+pokemon_species_id);
-        } else {
+            location.assign('status.php?pokemon-id='+pokemon_id);
+        } 
+        else if (action == 'name') {
+            var new_name =  prompt("Enter a New Name", "");
             request = $.ajax({
                 url: 'post_pcbox.php',
                 type: 'post',
-                data: { ajax: 1, name: action, pokemon_species_id: pokemon_species_id },
+                data: { ajax: 1, name: action, new_name: new_name, pokemon_id: pokemon_id },
+                success: function (response) {
+                    console.log(response);
+                    location.reload();
+                }
+            });
+        }
+        else {
+            request = $.ajax({
+                url: 'post_pcbox.php',
+                type: 'post',
+                data: { ajax: 1, action: action, pokemon_id: pokemon_id },
                 success: function (response) {
                     console.log(response);
                     location.reload();
@@ -45,8 +58,8 @@ $(document).bind("mousedown", function (e) {
     if ($(e.target).parents(".context-menu").length <= 0) {
         $(".context-menu").hide(100);
     }
-    var pokemon_species_id = $(e.target).closest(".card").data('id') ?
+    var pokemon_id = $(e.target).closest(".card").data('id') ?
         $(e.target).closest(".card").data('id') :
         $(e.target).closest(".slot").data('id');
-    $('.context-menu').data('id', pokemon_species_id);
+    $('.context-menu').data('id', pokemon_id);
 });

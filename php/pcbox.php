@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <?php
 // Handle AJAX request (start)
-if( isset($_POST['ajax']) && isset($_POST['name']) ){
- echo $_POST['name'];
- exit;
+if (isset($_POST['ajax']) && isset($_POST['name'])) {
+    echo $_POST['name'];
+    exit;
 }
 // Handle AJAX request (end)
 ?>
+
 <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="../js/pc_box.js"></script>
@@ -130,7 +131,8 @@ if (isset($_POST['Submit']) && $_POST['Submit'] == 'create trainer') {
             </form>
             <div class="card-grid">
                 <?php
-                $result = $conn->query("SELECT pokemon_species_id, pokemon_id FROM pokemon WHERE trainer_id = {$_SESSION['trainer_id']}");
+                $result = $conn->query("SELECT pokemon_species_id, pokemon_id FROM pokemon p WHERE trainer_id = {$_SESSION['trainer_id']}
+                    AND NOT EXISTS (SELECT * FROM party_pokemon pm WHERE pm.pokemon_id = p.pokemon_id)");
                 if ($result->num_rows > 0) {
                     while ($pokemon = $result->fetch_assoc()) {
                         $number = sprintf('%03d', $pokemon['pokemon_species_id']);

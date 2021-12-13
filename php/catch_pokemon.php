@@ -37,17 +37,18 @@ if (isset($_POST['Submit'])) {
     )";
     $result = $conn->query($sql);
     $pokemon_id = $conn->insert_id;
+    $move_slot = 1;
+    while ($move_id = array_pop($_POST['moves_id'])) {
+        $conn->query("INSERT INTO pokemon_moves (Moves_ID, Pokemon_ID, Move_Slot)  VALUES ({$move_id}, {$pokemon_id}, {$move_slot})");
+        $move_slot++;
+    }
     // Start transaction to add to party
     $conn->autocommit(FALSE);
-    $result = $conn->query("SELECT COUNT(*) FROM party_pokemon WHERE Trainer_ID = {$_SESSION['trainer_id']}");
-    if ($result->num_rows < 6) {
-        $slot = $result->num_rows + 1;
+    $result = $conn->query("SELECT COUNT(*) AS slots FROM party_pokemon WHERE Trainer_ID = {$_SESSION['trainer_id']}");
+    $slots = $result->fetch_assoc()['slots'];
+    if ($slots < 6) {
+        $slot = $slots + 1;
         $conn->query("INSERT INTO party_pokemon (Trainer_ID, Pokemon_ID, Party_Slot)  VALUES ({$_SESSION['trainer_id']}, {$pokemon_id}, {$slot})");
-        $move_slot = 1;
-        while ($move_id = array_pop($_POST['moves_id'])) {
-            $conn->query("INSERT INTO pokemon_moves (Moves_ID, Pokemon_ID, Move_Slot)  VALUES ({$move_id}, {$pokemon_id}, {$move_slot})");
-            $move_slot++;
-        }
         $conn->commit();
     } else {
         $conn->rollback();
