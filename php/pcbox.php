@@ -1,5 +1,12 @@
 <!DOCTYPE html>
-
+<?php
+// Handle AJAX request (start)
+if( isset($_POST['ajax']) && isset($_POST['name']) ){
+ echo $_POST['name'];
+ exit;
+}
+// Handle AJAX request (end)
+?>
 <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="../js/pc_box.js"></script>
@@ -23,7 +30,6 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
 if (isset($_POST['Submit']) && $_POST['Submit'] == 'create trainer') {
     $name = $_POST['name'];
     $gender = $_POST['gender'] == "male" ? "♂" : "♀";
@@ -71,20 +77,20 @@ if (isset($_POST['Submit']) && $_POST['Submit'] == 'create trainer') {
         <div class="col party">
             <div class="party_title">Party</div>
             <?php
-            $sql = "SELECT p.pokemon_name, p.pokemon_level, p.pokemon_species_id
+            $sql = "SELECT p.pokemon_name, p.pokemon_level, p.pokemon_species_id, p.pokemon_id
                 FROM pokedex.party_pokemon pp, pokedex.pokemon p 
                 WHERE pp.Trainer_ID = {$_SESSION['trainer_id']} AND pp.Pokemon_ID = p.Pokemon_ID";
-            $party_pokemon = $conn->query($sql)->fetch_all();
-
+            $result = $conn->query($sql);
+            // $party_pokemon = $result->fetch_all();
             for ($i = 1; $i <= 6; $i++) {
-                if ($party_pokemon[$i]) {
-                    $pokemon = $party_pokemon[$i];
-                    $number = sprintf('%03d', $pokemon[1]);
-                    echo "<div name=\"slot1\" class=\"slot\">
+                if ($pokemon = $result->fetch_assoc()) {
+                    // $pokemon = $party_pokemon[$i];
+                    $number = sprintf('%03d', $pokemon['pokemon_species_id']);
+                    echo "<div name=\"slot{$i}\" class=\"slot\" data-id=\"{$pokemon['pokemon_id']}\">
                     <img class=\"party_image\" src=\"../img/pkmn_{$number}.png\">
                     <div class=\"col\">
-                        <div class=\"party_pokemon_name\">{$pokemon[0]}</div>
-                        <div class=\"lvl\">Lv.{$pokemon[2]}</div>
+                        <div class=\"party_pokemon_name\">{$pokemon['pokemon_name']}</div>
+                        <div class=\"lvl\">Lv.{$pokemon['pokemon_level']}</div>
                     </div>
                 </div>";
                 } else {
@@ -124,11 +130,11 @@ if (isset($_POST['Submit']) && $_POST['Submit'] == 'create trainer') {
             </form>
             <div class="card-grid">
                 <?php
-                $result = $conn->query("SELECT pokemon_species_id FROM pokemon WHERE trainer_id = {$_SESSION['trainer_id']}");
+                $result = $conn->query("SELECT pokemon_species_id, pokemon_id FROM pokemon WHERE trainer_id = {$_SESSION['trainer_id']}");
                 if ($result->num_rows > 0) {
                     while ($pokemon = $result->fetch_assoc()) {
                         $number = sprintf('%03d', $pokemon['pokemon_species_id']);
-                        echo "<div class=\"card\">
+                        echo "<div class=\"card\" data-id=\"{$pokemon['pokemon_id']}\">
                             <img class=\"box_image\" src=\"../img/pkmn_{$number}.png\">
                         </div>";
                     }

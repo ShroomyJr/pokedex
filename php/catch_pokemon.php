@@ -43,6 +43,11 @@ if (isset($_POST['Submit'])) {
     if ($result->num_rows < 6) {
         $slot = $result->num_rows + 1;
         $conn->query("INSERT INTO party_pokemon (Trainer_ID, Pokemon_ID, Party_Slot)  VALUES ({$_SESSION['trainer_id']}, {$pokemon_id}, {$slot})");
+        $move_slot = 1;
+        while ($move_id = array_pop($_POST['moves_id'])) {
+            $conn->query("INSERT INTO pokemon_moves (Moves_ID, Pokemon_ID, Move_Slot)  VALUES ({$move_id}, {$pokemon_id}, {$move_slot})");
+            $move_slot++;
+        }
         $conn->commit();
     } else {
         $conn->rollback();
@@ -111,7 +116,7 @@ if (isset($_POST['Submit'])) {
                 $sql = "SELECT m.moves_id, m.move_name, m.move_pp, t.types_id, t.types_name
                     FROM moves m, types t
                     WHERE m.Types_ID = t.types_ID
-                    AND (t.types_name = \"Psychic\" OR t.types_name = \"Water\")
+                    AND (t.types_name = \"{$pokemon['type_1']}\" OR t.types_name = \"{$pokemon['type_2']}\" OR t.types_name = \"Normal\")
                     ORDER BY RAND()
                     LIMIT 4;";
                 $result = $conn->query($sql);
