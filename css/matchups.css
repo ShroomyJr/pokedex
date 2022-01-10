@@ -29,12 +29,10 @@ td {
 
 
 th[scope="col"] {
-    background-color: blueviolet;
     color: white;
 }
 
 th[scope="row"] {
-    background-color: maroon;
     color: white;
 }
 
